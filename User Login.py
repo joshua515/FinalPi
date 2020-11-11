@@ -2,9 +2,11 @@
  
 
 from tkinter import *
+from subprocess import call
 import os
 import hashlib
 
+import runpy
 # Designing window for registration
  
 def register():
@@ -105,10 +107,11 @@ def login_verify():
     list_of_files = os.listdir()
     if username1 in list_of_files:
         file1 = open(username1, "r")
-        verify = file1.read().splitlines()
-        if hashed_pass in verify:
+        verify1 = file1.read().splitlines()
+        if hashed_pass in verify1:
             login_sucess()
- 
+            runpy.run_path(path_name='covidProj.py')
+
         else:
             password_not_recognised()
  
